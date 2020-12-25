@@ -5,6 +5,7 @@ const Bodies = Matter.Bodies;
 
 var engine,world; 
 var particles = [];
+var particle;
 var plinkos=[];
 var rows=[];
 var ground;
@@ -50,13 +51,13 @@ function setup() {
 }
 
 function draw() {
-  if(frameCount % 30 === 0){
-    particle = new Particle(random(120, 500), 0, 7, random(0, 360));
-    particles.push(particle);
-  }
 
   background("black");
   Engine.update(engine, 25);
+
+  if(frameCount % 30 === 0){
+    particles.push(new Particle(random(120, 500), 0, 7, random(0, 360)));
+  }
   for(var i = 0; i < particles.length; i++){
     particles[i].display();
   }
@@ -81,6 +82,4 @@ function draw() {
 
 //rows.display();
 ground.display();
-
-  drawSprites();
 }
